@@ -1,0 +1,36 @@
+@startuml
+
+left to right direction
+
+actor Azienda
+actor "Responsabile Tirocini" as Responsabile
+actor Studente
+
+usecase "Proporre offerte di tirocinio" as UC1
+usecase "Approvare/rifiutare offerte di tirocinio" as UC2
+usecase "Notifica rifiuto all'azienda" as UC3
+usecase "Visualizzare offerte accettate" as UC4
+usecase "Accordarsi con azienda" as UC5
+usecase "Assegnare studente a tirocinio" as UC6
+usecase "Approvare/rifiutare accoppiamenti" as UC7
+usecase "Stampare accordo da firmare" as UC8
+
+Azienda --> UC1
+UC1 --> UC2 : "Offerte proposte"
+UC2 --> UC3 : "Offerta rifiutata"
+UC2 --> UC4 : "Offerta accettata"
+
+Studente --> UC4
+UC4 --> UC5
+UC5 --> UC6
+
+Azienda --> UC6
+UC6 --> UC7 : "Accoppiamento proposto"
+UC7 --> UC8 : "Accoppiamento approvato"
+UC7 --> Azienda : "Accoppiamento rifiutato"
+UC7 --> Studente : "Accoppiamento rifiutato"
+UC8 --> Azienda
+UC8 --> Studente
+UC8 --> Responsabile
+
+@enduml

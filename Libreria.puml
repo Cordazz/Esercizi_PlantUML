@@ -1,0 +1,27 @@
+@startuml
+package "gestione"{
+class libro {
+-nomeLiro:String
+-codiceLibro:int
+-disponibilitàLibro():void
+}
+class utente {
+-nomeUtente:String
+-codiceUtente:int
++{abstract}prestito():boolean
++{abstract}restituzione():boolean
+}
+class biblioteca {
+-libri:Libri[]
+-utenti:Utenti[]
+}
+}
+class prestito {
+-libriPrestatiTOT:String[]
++cercaUtente():void
++cercaLibro():void
++prestito():void
++restituzione():void
+}
+prestito --|> "gestione"
+@enduml
